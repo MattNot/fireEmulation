@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
     srand(time(0));
     int world[WORLD_SIZE][WORLD_SIZE];
     int newWorld[myRows][WORLD_SIZE];
-    int oxygenWorld[myRows][WORLD_SIZE];
+    int oxygenLittleWorld[myRows][WORLD_SIZE];
     string windsLow[8]={
         "./Up1.png",
         "./NE1.png",
@@ -215,7 +215,7 @@ int main(int argc, char *argv[])
         for (int j = 0; j < WORLD_SIZE; j++)
         {
             newWorld[i][j] = myWorld[i][j];
-            oxygenWorld[i][j] = 100;
+            oxygenLittleWorld[i][j] = 255;
         }
     }
     for (int n = 0; n < 900; n++)
@@ -244,12 +244,12 @@ int main(int argc, char *argv[])
         {
             for (int j = 0; j < WORLD_SIZE; j++)
             {
-                if (myWorld[i][j] == BURNING && oxygenWorld[i][j] == 0)
+                if (myWorld[i][j] == BURNING && oxygenLittleWorld[i][j] == 0)
                 {
                     newWorld[i][j] = DEAD;
                 }else if(myWorld[i][j] == BURNING){
                     newWorld[i][j] = BURNING;
-                    oxygenWorld[i][j] -=25;
+                    oxygenLittleWorld[i][j] -=10;
                 }
                 myWorld[i][j] = newWorld[i][j];
             }
